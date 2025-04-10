@@ -271,7 +271,7 @@ public class PokemonProgressBarUi extends BasicProgressBarUI {
         final Color color = graphics2D.getColor();
         final Stroke stroke = graphics2D.getStroke();
 
-        graphics2D.setColor(progressBar.getForeground());
+        graphics2D.setColor(progressBar.getBackground());
         graphics2D.setStroke(new BasicStroke(2));
         graphics2D.draw(rectangle);
 

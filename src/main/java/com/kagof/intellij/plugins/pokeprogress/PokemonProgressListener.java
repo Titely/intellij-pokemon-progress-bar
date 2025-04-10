@@ -5,6 +5,8 @@ import java.util.Optional;
 
 import javax.swing.UIManager;
 
+import com.intellij.openapi.application.ApplicationActivationListener;
+import com.intellij.openapi.wm.IdeFrame;
 import org.jetbrains.annotations.NotNull;
 
 import com.intellij.ide.plugins.DynamicPluginListener;
@@ -14,7 +16,7 @@ import com.intellij.ide.ui.LafManagerListener;
 import com.intellij.openapi.extensions.PluginId;
 import com.kagof.intellij.plugins.pokeprogress.configuration.PokemonProgressState;
 
-public class PokemonProgressListener implements LafManagerListener, DynamicPluginListener {
+public class PokemonProgressListener implements LafManagerListener, DynamicPluginListener, ApplicationActivationListener {
     private static final String PROGRESS_BAR_UI_KEY = "ProgressBarUI";
     private static final String POKEMON_PROGRESS_BAR_UI_IMPLEMENTATION_NAME = PokemonProgressBarUi.class.getName();
     private volatile static Object previousProgressBar = null;
@@ -42,6 +44,11 @@ public class PokemonProgressListener implements LafManagerListener, DynamicPlugi
         if (Objects.equals(pluginId, pluginDescriptor.getPluginId())) {
             resetProgressBarUi();
         }
+    }
+
+    @Override
+    public void applicationActivated(@NotNull IdeFrame ideFrame) {
+        updateProgressBarUi();
     }
 
     static void updateProgressBarUi() {

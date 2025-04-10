@@ -23,5 +23,7 @@
                   topic="com.intellij.ide.ui.LafManagerListener" />
         <listener class="com.kagof.intellij.plugins.pokeprogress.PokemonProgressListener"
                   topic="com.intellij.ide.plugins.DynamicPluginListener" />
+        <listener class="com.kagof.intellij.plugins.pokeprogress.PokemonProgressListener"
+                  topic="com.intellij.openapi.application.ApplicationActivationListener"/>
     </applicationListeners>
 </idea-plugin>
